@@ -19,6 +19,8 @@ document.querySelector("#TESLA").addEventListener('click', ()=>{
         box = document.getElementById("scatter_area")
         removeChildren(box)
         OnNewDataLoad()
+        let input = document.querySelector("#recent")
+        update(data.filter(x=>x.Date < input.value))
     }
     )
 }
@@ -41,6 +43,8 @@ document.querySelector("#AAPL").addEventListener('click', ()=>{
         box = document.getElementById("scatter_area")
         removeChildren(box)
         OnNewDataLoad()
+         let input = document.querySelector("#recent")
+        update(data.filter(x=>x.Date < input.value))
     }
     )
 
@@ -64,6 +68,8 @@ document.querySelector("#FB").addEventListener('click', ()=>{
         box = document.getElementById("scatter_area")
         removeChildren(box)
         OnNewDataLoad()
+        let input = document.querySelector("#recent")
+        update(data.filter(x=>x.Date < input.value))
     }
     )
 
@@ -87,7 +93,9 @@ document.querySelector("#GME").addEventListener('click', ()=>{
         box = document.getElementById("scatter_area")
         removeChildren(box)
         OnNewDataLoad()
-                
+        let input = document.querySelector("#recent")
+        update(data.filter(x=>x.Date < input.value))
+
     }
     )
 
@@ -107,9 +115,7 @@ function setup(w, h) {
     height = h - margin.top - margin.bottom;
 
     // append the svg object to the body of the page
-    svg = d3.select("#scatter_area").append("svg").attr("viewbox", `0 0 ${width + margin.left + margin.right} ${height + margin.top + margin.bottom}`)
-    .attr('preserveAspectRatio','xMidYMid meet')
-    .attr("width", w).attr("height", h).append("g").attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+    svg = d3.select("#scatter_area").append("svg").attr("viewbox", `0 0 ${width + margin.left + margin.right} ${height + margin.top + margin.bottom}`).attr('preserveAspectRatio', 'xMidYMid meet').attr("width", w).attr("height", h).append("g").attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
     //Read the data
     data = activedata;
@@ -126,7 +132,6 @@ function setup(w, h) {
     x = d3.scaleLinear().domain(extentx).range([0, width]);
     // text label for the x axis
     svg.append("text").attr("transform", `translate(${width / 2} , ${(height + margin.top + 30)})`).style("text-anchor", "middle").text("Date");
-
     svg.append("g").attr("transform", "translate(0," + height + ")").call(d3.axisBottom(x).tickFormat(d3.format("d")));
     svg.append("text").attr("transform", "rotate(-90)").attr("y", 0 - margin.left).attr("x", 0 - (height / 2)).attr("dy", "1em").style("text-anchor", "middle").text("Share Price (USD)");
 
@@ -165,7 +170,7 @@ let removeChildren = (element)=>{
 var svg, y, x, width, height, extentx, extenty;
 /* start up ------------------------------------*/
 
-function OnNewDataLoad(){
+function OnNewDataLoad() {
     const box = document.getElementById("scatter_area")
     //console.log(box.offsetWidth,box.offsetHeight)
     setup(box.offsetWidth, box.offsetHeight)
@@ -176,7 +181,6 @@ function OnNewDataLoad(){
         setup(box.offsetWidth, box.offsetHeight)
         update(data.filter(x=>x.Date < input.value))
     }
-
     let input = document.querySelector("#recent")
     input.setAttribute("max", extentx[1])
     input.setAttribute("min", extentx[0])
@@ -189,7 +193,6 @@ function OnNewDataLoad(){
     input.addEventListener('mousemove', event=>{
         //console.log("event", input,event)
         document.getElementById("maxyear").innerHTML = input.value
-
         update(data.filter(x=>x.Date < input.value))
     }
     )
