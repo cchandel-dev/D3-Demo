@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<!-- Load d3.js -->
+<script src="https://d3js.org/d3.v4.js"></script>
+<!-- Create a div where the graph will take place -->
+<div id="my_dataviz"></div>
+<!-- Color Scale -->
+<script src="https://d3js.org/d3-scale-chromatic.v1.min.js"></script>
+<head>
+    <style>
+        #scatter_area {
+            width: 85%;
+            aspect-ratio: 9/5;
+        }
+
+        svg .dot text {
+            /*font: 8px sans;*/
+        }
+
+        .slider-width {
+            width: 90% !important;
+            /* needed */
+        }
+
+        h2 {
+            text-align: center;
+        }
+
+        h2 span {
+            font: 14px sans;
+        }
+
+        #maxyear {
+        }
+    </style>
+    <script src="https://d3js.org/d3.v7.js"></script>
+</head>
+<html>
+    <body>
+        <h2>Interactive Stock Data for the Last Year </h2>
+        <!-- Add an svg area, empty -->
+        <div id="scatter_area"></div>
+        <input class="slider-width" id="recent" type="range" width="750px">
+        <div id="maxyear">1970</div>
+        <ul id="newlist"></ul>
+        <button id="TESLA">TSLA</button>
+        <script type="text/javascript" src="script.js"></script>
+    </body>
+        <script src="mo.js"></script>
+</html>
