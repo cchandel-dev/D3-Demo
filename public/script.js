@@ -98,8 +98,8 @@ function setup(w, h) {
     height = h - margin.top - margin.bottom;
 
     // append the svg object to the body of the page
-    svg = d3.select("#scatter_area").append("svg")//.attr("viewbox", `0 0 ${width + margin.left + margin.right} ${height + margin.top + margin.bottom}`)
-    //.attr('preserveAspectRatio','xMidYMid meet')
+    svg = d3.select("#scatter_area").append("svg").attr("viewbox", `0 0 ${width + margin.left + margin.right} ${height + margin.top + margin.bottom}`)
+    .attr('preserveAspectRatio','xMidYMid meet')
     .attr("width", w).attr("height", h).append("g").attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
     //Read the data
