@@ -16,6 +16,8 @@ document.querySelector("#TESLA").addEventListener('click', ()=>{
         //refresh();
         // plotter(activedata)
         console.log(activedata[0]);
+        box = document.getElementById("scatter_area")
+        removeChildren(box)
         OnNewDataLoad()
     }
     )
@@ -36,6 +38,8 @@ document.querySelector("#AAPL").addEventListener('click', ()=>{
         //refresh();
         // plotter(activedata)
         console.log(activedata[0]);
+        box = document.getElementById("scatter_area")
+        removeChildren(box)
         OnNewDataLoad()
     }
     )
@@ -57,6 +61,8 @@ document.querySelector("#FB").addEventListener('click', ()=>{
         //refresh();
         //plotter(activedata)
         console.log(activedata[0]);
+        box = document.getElementById("scatter_area")
+        removeChildren(box)
         OnNewDataLoad()
     }
     )
@@ -78,7 +84,10 @@ document.querySelector("#GME").addEventListener('click', ()=>{
         //refresh();
         //plotter(activedata)
         console.log(activedata[0]);
+        box = document.getElementById("scatter_area")
+        removeChildren(box)
         OnNewDataLoad()
+                
     }
     )
 
