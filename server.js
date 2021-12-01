@@ -1,5 +1,5 @@
 
-//most of this code was copied from assignment 3
+//most of this code was copied from https://github.com/jimmorey/httpcode/blob/main/server.js
 //nearly 80% copied
 
 // create an express app
@@ -22,8 +22,7 @@ let urlencodedParser = bodyParser.urlencoded({
 })
 //define the first route
 app.get("/", function(req, res) {
-    //res.json("Hello World!");
-    res.sendfile(path.join(__dirname, "public", "Javascript.html"))
+    res.sendfile(path.join(__dirname, "public", "index.html"))
 })
 
 app.use(express.static("public"))

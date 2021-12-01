@@ -1,7 +1,8 @@
 var activedata;//used to hold the data for the actively displayed ticker.
 var svg;// used to hold the svg.
 
-//the code below is original up until next citation (previous assignment work of mine)   
+//the code below is from https://github.com/jimmorey/httpcode/blob/main/public/client.js
+//I copied about 30% of the code (tons of modifications)
 //add an event listener to grab stock data from server
 //remove the old display and throw on the new display
 document.querySelector("#AAPL").addEventListener('click', ()=>{
@@ -125,7 +126,6 @@ var svg, y, x, width, height, extentx, extenty;
 
 function OnNewDataLoad() {
     const box = document.getElementById("scatter_area")
-    //console.log(box.offsetWidth,box.offsetHeight)
     setup(box.offsetWidth, box.offsetHeight)
     update(data.filter(x=>x.Date < [0]))
 
@@ -138,7 +138,6 @@ function OnNewDataLoad() {
     input.setAttribute("max", extentx[1])
     input.setAttribute("min", extentx[0])
     input.addEventListener('change', event=>{
-        //console.log("event", input,event)
         document.getElementById("maxyear").innerHTML = input.value
         update(data.filter(x=>x.Date < input.value))
     }

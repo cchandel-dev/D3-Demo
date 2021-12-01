@@ -1,6 +1,10 @@
+
+ul {
+    border-radius: 15px;
+}
 /* 
 https://publish.uwo.ca/~jmorey2/ece/dataPage1.html
-everything below this is from the link above
+100% of the code below this is from the link above
 */
 h1 {
     font-family: 'Alegreya' ;
@@ -39,7 +43,7 @@ span {
 
 /* special css
 https://publish.uwo.ca/~jmorey2/ece/dataPage1.html
-everything below this is from the link above
+100% of code below this is from the link above
 */
 ul {
     list-style: none;
@@ -53,40 +57,8 @@ details[open] {
     padding: 15px;
 }
 
-li,ul, details {
-    border-radius: 15px;
-}
 
-li:nth-child(3n) {
-    background: rgba(220,200,200,0.4);
-}
-
-li:nth-child(6n) summary {
-    color: /* azure */ #007FFF;
-}
-
-li:nth-child(6n+1) summary {
-    color: /* violet */ #7F00FF;
-}
-
-li:nth-child(6n+2) summary {
-    color: /* rose */ #FF007F;
-    top: 7px;
-}
-
-li:nth-child(6n+3) summary {
-    color: /* orange*/ #FF7F00;
-}
-
-li:nth-child(6n+4) summary {
-    color: /* chartreuse */ #7FFF00 ;
-}
-
-li:nth-child(6n+5) summary {
-    color: /* spring green */ #00FF7F;
-}
-
-/*code below comes from 
+/*90% of code below is from link below
 https://jimmorey.com/simple.css
 */
 body {
@@ -100,7 +72,7 @@ body {
     background-attachment: fixed;
 }
 
-/*code below is from 
+/* 80% of code below is from link below
 https://publish.uwo.ca/~jmorey2/ece/data4njq.html
 */
 button:focus ~ span{
@@ -108,11 +80,11 @@ button:focus ~ span{
 }
 
 button:hover {
-    background-color: #694107
+    background-color: #3f9edd
 }
 
 button:active {
-    background-color: #694107;
-    box-shadow: 1px 3px #666;
+    background-color: #d2d3cc;
+    box-shadow: 1px 3px #e59191;
     transform: translate(1px,3px);
 }
