@@ -1,7 +1,6 @@
 var activedata;
 var svg;
-var type ;
-var first = true;
+
    
 
 document.querySelector("#AAPL").addEventListener('click', ()=>{
@@ -9,10 +8,7 @@ document.querySelector("#AAPL").addEventListener('click', ()=>{
     fetch('/updateClient1').then(response=>response.json()).then(x=>{
         x.stockPrice.forEach(d=>{
             d.Date = d.Date * 1;
-            d.Open = d.Open * 1;
             d.Close = d.Close * 1;
-            d.High = d.High * 1;
-            d.Low = d.Low * 1;
             d.Hover = d.Hover * 1;
         }
         )
@@ -35,11 +31,8 @@ document.querySelector("#FB").addEventListener('click', ()=>{
     fetch('/updateClient2').then(response=>response.json()).then(x=>{
         x.stockPrice.forEach(d=>{
             d.Date = d.Date * 1;
-            d.Open = d.Open * 1;
             d.Close = d.Close * 1;
-            d.High = d.High * 1;
-            d.Low = d.Low * 1;
-         //   d.Hover = d.Hover * 1;
+            d.Hover = d.Hover * 1;
         }
         )
         activedata = x.stockPrice;

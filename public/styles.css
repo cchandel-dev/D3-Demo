@@ -1,36 +1,118 @@
+/* 
+https://publish.uwo.ca/~jmorey2/ece/dataPage1.html
+everything below this is from the link above
+*/
 h1 {
-	font-family: 'Alegreya' ;
+    font-family: 'Alegreya' ;
 }
 
 body {
-	font-family: 'Source Sans Pro' ;
-	width: 50%;
-	margin-left: 25%;
-	text-align: justify;
-	line-height: 1.7;
-	font-size: 18px;
+    font-family: 'Source Sans Pro' ;
+    width: 50%;
+    margin-left: 25%;
+    text-align: justify;
+    line-height: 1.7;
+    font-size: 18px;
 }
 
 input {
-	font-size: 18px;
-	text-align: center;
+    font-size: 18px;
+    text-align: center;
 }
 
 button {
-	font-size: 18px;
-	color: #f00303;
+    font-size: 18px;
+    color: #f00303;
 }
 
-span{
-    color:white;
+span {
+    color: white;
 }
-button:focus ~ span{
-	all:initial
-}
+
 #generate {
-	background-color: #09f;
+    background-color: #09f;
 }
 
 #copy {
-	background-color: #0c6;
+    background-color: #0c6;
+}
+
+/* special css
+https://publish.uwo.ca/~jmorey2/ece/dataPage1.html
+everything below this is from the link above
+*/
+ul {
+    list-style: none;
+    border: 4px solid rgb(0 0 0);
+    padding: 3px;
+}
+
+details[open] {
+    font-weight: bold;
+    border: 1px double black;
+    padding: 15px;
+}
+
+li,ul, details {
+    border-radius: 15px;
+}
+
+li:nth-child(3n) {
+    background: rgba(220,200,200,0.4);
+}
+
+li:nth-child(6n) summary {
+    color: /* azure */ #007FFF;
+}
+
+li:nth-child(6n+1) summary {
+    color: /* violet */ #7F00FF;
+}
+
+li:nth-child(6n+2) summary {
+    color: /* rose */ #FF007F;
+    top: 7px;
+}
+
+li:nth-child(6n+3) summary {
+    color: /* orange*/ #FF7F00;
+}
+
+li:nth-child(6n+4) summary {
+    color: /* chartreuse */ #7FFF00 ;
+}
+
+li:nth-child(6n+5) summary {
+    color: /* spring green */ #00FF7F;
+}
+
+/*code below comes from 
+https://jimmorey.com/simple.css
+*/
+body {
+    background-image: linear-gradient(30deg, #dff0dd 12%, transparent 15%, transparent 85%, #dff0dd 87%, #dff0dd), linear-gradient(150deg, #dff0dd 12%, transparent 15%, transparent 85%, #dff0dd 87%, #dff0dd), linear-gradient(30deg, #dff0dd 12%, transparent 15%, transparent 85%, #dff0dd 87%, #dff0dd), linear-gradient(150deg, #dff0dd 12%, transparent 15%, transparent 85%, #dff0dd 87%, #dff0dd), linear-gradient(60deg, #eeffee 25%, transparent 28%, transparent 72%, #eeffee 75%, #eeffee), linear-gradient(60deg, #eeffee 25%, transparent 28%, transparent 72%, #eeffee 75%, #eeffee);
+    background-size: 160px 280px;
+    background-position: 0 0, 0 0, 80px 140px, 80px 140px, 0 0, 80px 140px;
+    background-size: 80px 140px;
+    background-position: 0 0, 0 0, 40px 70px, 40px 70px, 0 0, 40px 70px;
+    */ background: url("hex.svg");
+    background-size: 246px 213px;
+    background-attachment: fixed;
+}
+
+/*code below is from 
+https://publish.uwo.ca/~jmorey2/ece/data4njq.html
+*/
+button:focus ~ span{
+	all:initial
+}
+
+button:hover {
+    background-color: #694107
+}
+
+button:active {
+    background-color: #694107;
+    box-shadow: 1px 3px #666;
+    transform: translate(1px,3px);
 }
