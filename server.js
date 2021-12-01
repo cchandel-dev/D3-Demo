@@ -6,7 +6,6 @@ const path = require("path")
 const fs = require('fs')
 const bodyParser = require('body-parser')
 
-
 //read in the JSON data for Tesla stock
 let Tesla_data = JSON.parse(fs.readFileSync('public/TSLA.json'));
 //read in the JSON data for Apple stock
@@ -58,11 +57,18 @@ app.get('/updateClient3', (req,res)=>{
 )
 
 app.post("/updateServer", (req,res)=>{
-    jdata.term[req.body.Index].Term = req.body.Term;
-    jdata.term[req.body.Index].Description = req.body.Description;
-    jdata.term[req.body.Index].URL = req.body.URL;
-    jdata.term[req.body.Index].Importance = req.body.Importance;
-
+    if (res.body.type == "TSLA") {
+        Tesla_data[req.body.Index].Hover = req.body.Hover;
+    }
+    if (res.body.type == "META") {
+        Meta_data[req.body.Index].Hover = req.body.Hover;
+    }
+    if (res.body.type == "GME") {
+        Meta_data[req.body.Index].Hover = req.body.Hover;
+    }
+    if (res.body.type == "AAPL") {
+        Meta_data[req.body.Index].Hover = req.body.Hover;
+    }
 }
 )
 

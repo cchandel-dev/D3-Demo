@@ -1,8 +1,25 @@
 var activedata;
 var svg;
-
+var type = "TSLA";
+//server send
+ /*   for (let i = 0; i < 252; i++) {
+        fetch('/updateServer', {
+            method: "POST",
+            headers: {
+                'Accept': 'application/json, text/plain,',
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                "type": type,
+                "Index": i,
+                "Hover": activedata[i].Hover
+            })
+        }).then(response=>response.text()).then(html=>console.log(html))
+    }
+    */
 document.querySelector("#TESLA").addEventListener('click', ()=>{
     //0 = TSLA, 1 = AAPL, 2 = META, 3 = GME
+
     fetch('/updateClient0').then(response=>response.json()).then(x=>{
         x.stockPrice.forEach(d=>{
             d.Date = d.Date * 1;
@@ -10,6 +27,8 @@ document.querySelector("#TESLA").addEventListener('click', ()=>{
             d.Close = d.Close * 1;
             d.High = d.High * 1;
             d.Low = d.Low * 1;
+           // d.Hover = d.Hover * 1;
+            console.log(d);
         }
         )
         activedata = x.stockPrice;
@@ -27,6 +46,7 @@ document.querySelector("#TESLA").addEventListener('click', ()=>{
 )
 document.querySelector("#AAPL").addEventListener('click', ()=>{
     //0 = TSLA, 1 = AAPL, 2 = META, 3 = GME
+
     fetch('/updateClient1').then(response=>response.json()).then(x=>{
         x.stockPrice.forEach(d=>{
             d.Date = d.Date * 1;
@@ -34,6 +54,7 @@ document.querySelector("#AAPL").addEventListener('click', ()=>{
             d.Close = d.Close * 1;
             d.High = d.High * 1;
             d.Low = d.Low * 1;
+          //  d.Hover = d.Hover * 1;
         }
         )
         activedata = x.stockPrice;
@@ -43,7 +64,7 @@ document.querySelector("#AAPL").addEventListener('click', ()=>{
         box = document.getElementById("scatter_area")
         removeChildren(box)
         OnNewDataLoad()
-         let input = document.querySelector("#recent")
+        let input = document.querySelector("#recent")
         update(data.filter(x=>x.Date < input.value))
     }
     )
@@ -52,6 +73,7 @@ document.querySelector("#AAPL").addEventListener('click', ()=>{
 )
 document.querySelector("#FB").addEventListener('click', ()=>{
     //0 = TSLA, 1 = AAPL, 2 = META, 3 = GME
+
     fetch('/updateClient2').then(response=>response.json()).then(x=>{
         x.stockPrice.forEach(d=>{
             d.Date = d.Date * 1;
@@ -59,6 +81,7 @@ document.querySelector("#FB").addEventListener('click', ()=>{
             d.Close = d.Close * 1;
             d.High = d.High * 1;
             d.Low = d.Low * 1;
+         //   d.Hover = d.Hover * 1;
         }
         )
         activedata = x.stockPrice;
@@ -76,7 +99,7 @@ document.querySelector("#FB").addEventListener('click', ()=>{
 }
 )
 document.querySelector("#GME").addEventListener('click', ()=>{
-    //0 = TSLA, 1 = AAPL, 2 = META, 3 = GME
+
     fetch('/updateClient3').then(response=>response.json()).then(x=>{
         x.stockPrice.forEach(d=>{
             d.Date = d.Date * 1;
@@ -84,6 +107,7 @@ document.querySelector("#GME").addEventListener('click', ()=>{
             d.Close = d.Close * 1;
             d.High = d.High * 1;
             d.Low = d.Low * 1;
+            //d.Hover = d.Hover * 1;
         }
         )
         activedata = x.stockPrice;
@@ -145,7 +169,7 @@ function update(data) {
     svg.selectAll(".dot").data(data, d=>d.stockPrice).join(enter=>{
         let group = enter.append('g').attr('class', "dot")
         group.append('text').attr("class", "label").attr("font-size", "12").attr("text-anchor", "middle")//.attr("vertical-align","central")  //doesn't work
-        .attr('transform', d=>`translate(${x(d.Date)},${y(d.Close)} )`).text(d=>d.Close).attr('stroke', "grey").attr("opacity", 0.75).on("mouseover", handleMouseOver).on("mouseout", handleMouseOut).transition().duration('1500').attr("opacity", 0.05)
+        .attr('transform', d=>`translate(${x(d.Date)},${y(d.Close)} )`).text(d=>d.Hover).attr('stroke', "grey").attr("opacity", 0.75).on("mouseover", handleMouseOver).on("mouseout", handleMouseOut).transition().duration('1500').attr("opacity", 0.05).attr('index', (d,i)=>i)
         group.append("circle").attr("cx", d=>x(d.Date)).attr("cy", d=>y(d.Close)).attr("r", 3).style("fill", "#69b3a2")
     }
     , update=>{
@@ -156,6 +180,9 @@ function update(data) {
 // Create Event Handlers for mouse
 function handleMouseOver(d) {
     d3.select(this).transition().duration('50').attr('stroke', "red").attr("font-size", "18").attr("opacity", 0.75)
+    let index = this.getAttribute("index");
+    activedata[index].Hover++;
+    console.log(activedata[index].Hover);
 }
 function handleMouseOut(d) {
     d3.select(this).transition().duration('50').attr('stroke', "grey").attr("opacity", 0.75).transition().duration('1000').attr("opacity", 0.05)
