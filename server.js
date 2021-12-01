@@ -1,3 +1,7 @@
+
+//most of this code was copied from assignment 3
+//nearly 80% copied
+
 // create an express app
 const express = require("express")
 const app = express()
@@ -24,8 +28,6 @@ app.get("/", function(req, res) {
 
 app.use(express.static("public"))
 
-
-
 // define the info route for Apple
 app.get('/updateClient1', (req,res)=>{
     console.log("sent Apple Stock Data to Client");
@@ -37,25 +39,6 @@ app.get('/updateClient1', (req,res)=>{
 app.get('/updateClient2', (req,res)=>{
     console.log("sent Meta Stock Data to Client");
     res.json(Meta_data);
-}
-)
-
-
-app.post("/updateServer", (req,res)=>{
-  /*  if (res.body.type == "TSLA") {
-        Tesla_data[req.body.Index].Hover = req.body.Hover;
-    }
-    if (res.body.type == "META") {
-        Meta_data[req.body.Index].Hover = req.body.Hover;
-    }
-    if (res.body.type == "GME") {
-        Meta_data[req.body.Index].Hover = req.body.Hover;
-    }*/
-    //if (res.body.type == "AAPL") {
-       // Apple_data[req.body.Index].Hover = req.body.Hover;
-   // }
-   console.log("Hello from the server")
- //  console.log(req.body.Hover);
 }
 )
 

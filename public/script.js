@@ -1,10 +1,10 @@
-var activedata;
-var svg;
+var activedata;//used to hold the data for the actively displayed ticker.
+var svg;// used to hold the svg.
 
-   
-
+//the code below is original up until next citation (previous assignment work of mine)   
+//add an event listener to grab stock data from server
+//remove the old display and throw on the new display
 document.querySelector("#AAPL").addEventListener('click', ()=>{
-    //0 = TSLA, 1 = AAPL, 2 = META, 3 = GME
     fetch('/updateClient1').then(response=>response.json()).then(x=>{
         x.stockPrice.forEach(d=>{
             d.Date = d.Date * 1;
@@ -13,12 +13,10 @@ document.querySelector("#AAPL").addEventListener('click', ()=>{
         }
         )
         activedata = x.stockPrice;
-        //refresh();
-        // plotter(activedata)
-        console.log(activedata[0]);
         box = document.getElementById("scatter_area")
         removeChildren(box)
         OnNewDataLoad()
+        //updates all of the dots
         let input = document.querySelector("#recent")
         update(data.filter(x=>x.Date < input.value))
     }
@@ -26,6 +24,8 @@ document.querySelector("#AAPL").addEventListener('click', ()=>{
 
 }
 )
+//add an event listener to grab stock data from server
+//remove the old display and throw on the new display
 document.querySelector("#FB").addEventListener('click', ()=>{
     //0 = TSLA, 1 = AAPL, 2 = META, 3 = GME
     fetch('/updateClient2').then(response=>response.json()).then(x=>{
@@ -36,12 +36,10 @@ document.querySelector("#FB").addEventListener('click', ()=>{
         }
         )
         activedata = x.stockPrice;
-        //refresh();
-        //plotter(activedata)
-        console.log(activedata[0]);
         box = document.getElementById("scatter_area")
         removeChildren(box)
         OnNewDataLoad()
+        //updates all of the dots
         let input = document.querySelector("#recent")
         update(data.filter(x=>x.Date < input.value))
     }
@@ -49,7 +47,11 @@ document.querySelector("#FB").addEventListener('click', ()=>{
 
 }
 )
-
+/* 
+https://publish.uwo.ca/~jmorey2/ece/d3Moore.html
+the code below has been modified from the link above
+20% modified
+*/
 function setup(w, h) {
     // set the dimensions and margins of the graph
     console.log(w)
@@ -107,12 +109,9 @@ function handleMouseOver(d) {
     d3.select(this).transition().duration('50').attr('stroke', "red").attr("font-size", "18").attr("opacity", 0.75)
     let index = this.getAttribute("index");
     activedata[index].Hover++;
-    console.log(activedata[index].Hover);
 }
 function handleMouseOut(d) {
     d3.select(this).transition().duration('50').attr('stroke', "grey").attr("opacity", 0.75).transition().duration('1000').attr("opacity", 0.05)
-      //  let input = document.querySelector("#recent")
-      //  update(data.filter(x=>x.Date < input.value))
 }
 
 let removeChildren = (element)=>{
