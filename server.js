@@ -6,14 +6,10 @@ const path = require("path")
 const fs = require('fs')
 const bodyParser = require('body-parser')
 
-//read in the JSON data for Tesla stock
-let Tesla_data = JSON.parse(fs.readFileSync('public/TSLA.json'));
 //read in the JSON data for Apple stock
 let Apple_data = JSON.parse(fs.readFileSync('public/AAPL.json'));
 //read in the JSON data for Meta stock
 let Meta_data = JSON.parse(fs.readFileSync('public/FB.json'));
-//read in the JSON data for GameStop stock
-let GME_data = JSON.parse(fs.readFileSync('public/GME.json'));
 
 //the next four lines are from httpcode
 let jsonParser = bodyParser.json()
@@ -28,12 +24,7 @@ app.get("/", function(req, res) {
 
 app.use(express.static("public"))
 
-// define the info route for Tesla
-app.get('/updateClient0', (req,res)=>{
-    console.log("sent Tesla Stock Data to Client");
-    res.json(Tesla_data);
-}
-)
+
 
 // define the info route for Apple
 app.get('/updateClient1', (req,res)=>{
@@ -49,15 +40,9 @@ app.get('/updateClient2', (req,res)=>{
 }
 )
 
-// define the info route for GameStop
-app.get('/updateClient3', (req,res)=>{
-    console.log("sent GameStop Stock Data to Client");
-    res.json(GME_data);
-}
-)
 
 app.post("/updateServer", (req,res)=>{
-    if (res.body.type == "TSLA") {
+  /*  if (res.body.type == "TSLA") {
         Tesla_data[req.body.Index].Hover = req.body.Hover;
     }
     if (res.body.type == "META") {
@@ -65,10 +50,12 @@ app.post("/updateServer", (req,res)=>{
     }
     if (res.body.type == "GME") {
         Meta_data[req.body.Index].Hover = req.body.Hover;
-    }
-    if (res.body.type == "AAPL") {
-        Meta_data[req.body.Index].Hover = req.body.Hover;
-    }
+    }*/
+    //if (res.body.type == "AAPL") {
+       // Apple_data[req.body.Index].Hover = req.body.Hover;
+   // }
+   console.log("Hello from the server")
+ //  console.log(req.body.Hover);
 }
 )
 

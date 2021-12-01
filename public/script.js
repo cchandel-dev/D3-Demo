@@ -1,52 +1,11 @@
 var activedata;
 var svg;
-var type = "TSLA";
-//server send
- /*   for (let i = 0; i < 252; i++) {
-        fetch('/updateServer', {
-            method: "POST",
-            headers: {
-                'Accept': 'application/json, text/plain,',
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({
-                "type": type,
-                "Index": i,
-                "Hover": activedata[i].Hover
-            })
-        }).then(response=>response.text()).then(html=>console.log(html))
-    }
-    */
-document.querySelector("#TESLA").addEventListener('click', ()=>{
-    //0 = TSLA, 1 = AAPL, 2 = META, 3 = GME
+var type ;
+var first = true;
+   
 
-    fetch('/updateClient0').then(response=>response.json()).then(x=>{
-        x.stockPrice.forEach(d=>{
-            d.Date = d.Date * 1;
-            d.Open = d.Open * 1;
-            d.Close = d.Close * 1;
-            d.High = d.High * 1;
-            d.Low = d.Low * 1;
-           // d.Hover = d.Hover * 1;
-            console.log(d);
-        }
-        )
-        activedata = x.stockPrice;
-        //refresh();
-        // plotter(activedata)
-        console.log(activedata[0]);
-        box = document.getElementById("scatter_area")
-        removeChildren(box)
-        OnNewDataLoad()
-        let input = document.querySelector("#recent")
-        update(data.filter(x=>x.Date < input.value))
-    }
-    )
-}
-)
 document.querySelector("#AAPL").addEventListener('click', ()=>{
     //0 = TSLA, 1 = AAPL, 2 = META, 3 = GME
-
     fetch('/updateClient1').then(response=>response.json()).then(x=>{
         x.stockPrice.forEach(d=>{
             d.Date = d.Date * 1;
@@ -54,7 +13,7 @@ document.querySelector("#AAPL").addEventListener('click', ()=>{
             d.Close = d.Close * 1;
             d.High = d.High * 1;
             d.Low = d.Low * 1;
-          //  d.Hover = d.Hover * 1;
+            d.Hover = d.Hover * 1;
         }
         )
         activedata = x.stockPrice;
@@ -73,7 +32,6 @@ document.querySelector("#AAPL").addEventListener('click', ()=>{
 )
 document.querySelector("#FB").addEventListener('click', ()=>{
     //0 = TSLA, 1 = AAPL, 2 = META, 3 = GME
-
     fetch('/updateClient2').then(response=>response.json()).then(x=>{
         x.stockPrice.forEach(d=>{
             d.Date = d.Date * 1;
@@ -98,33 +56,7 @@ document.querySelector("#FB").addEventListener('click', ()=>{
 
 }
 )
-document.querySelector("#GME").addEventListener('click', ()=>{
 
-    fetch('/updateClient3').then(response=>response.json()).then(x=>{
-        x.stockPrice.forEach(d=>{
-            d.Date = d.Date * 1;
-            d.Open = d.Open * 1;
-            d.Close = d.Close * 1;
-            d.High = d.High * 1;
-            d.Low = d.Low * 1;
-            //d.Hover = d.Hover * 1;
-        }
-        )
-        activedata = x.stockPrice;
-        //refresh();
-        //plotter(activedata)
-        console.log(activedata[0]);
-        box = document.getElementById("scatter_area")
-        removeChildren(box)
-        OnNewDataLoad()
-        let input = document.querySelector("#recent")
-        update(data.filter(x=>x.Date < input.value))
-
-    }
-    )
-
-}
-)
 function setup(w, h) {
     // set the dimensions and margins of the graph
     console.log(w)
@@ -186,6 +118,8 @@ function handleMouseOver(d) {
 }
 function handleMouseOut(d) {
     d3.select(this).transition().duration('50').attr('stroke', "grey").attr("opacity", 0.75).transition().duration('1000').attr("opacity", 0.05)
+      //  let input = document.querySelector("#recent")
+      //  update(data.filter(x=>x.Date < input.value))
 }
 
 let removeChildren = (element)=>{
