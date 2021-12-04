@@ -1,6 +1,6 @@
-var activedata;//used to hold the data for the actively displayed ticker.
-var svg;// used to hold the svg.
-
+var data;
+var svg;
+let input = document.querySelector("#recent")
 //the code below is from https://github.com/jimmorey/httpcode/blob/main/public/client.js
 //I copied about 30% of the code (tons of modifications)
 //add an event listener to grab stock data from server
@@ -13,7 +13,7 @@ document.querySelector("#AAPL").addEventListener('click', ()=>{
             d.Hover = d.Hover * 1;
         }
         )
-        activedata = x.stockPrice;
+        data = x.stockPrice;
         box = document.getElementById("scatter_area")
         removeChildren(box)
         OnNewDataLoad()
@@ -36,7 +36,7 @@ document.querySelector("#FB").addEventListener('click', ()=>{
             d.Hover = d.Hover * 1;
         }
         )
-        activedata = x.stockPrice;
+        data = x.stockPrice;
         box = document.getElementById("scatter_area")
         removeChildren(box)
         OnNewDataLoad()
@@ -67,7 +67,6 @@ function setup(w, h) {
     svg = d3.select("#scatter_area").append("svg").attr("viewbox", `0 0 ${width + margin.left + margin.right} ${height + margin.top + margin.bottom}`).attr('preserveAspectRatio', 'xMidYMid meet').attr("width", w).attr("height", h).append("g").attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
     //Read the data
-    data = activedata;
     data.forEach(x=>{
         x.Date = x.Date * 1
         x.Close = x.Close * 1
@@ -94,7 +93,7 @@ function update(data) {
     svg.selectAll(".dot").data(data, d=>d.stockPrice).join(enter=>{
         let group = enter.append('g').attr('class', "dot")
         group.append('text').attr("class", "label").attr("font-size", "12").attr("text-anchor", "middle")//.attr("vertical-align","central")  //doesn't work
-        .attr('transform', d=>`translate(${x(d.Date)},${y(d.Close)} )`).text(d=>d.Hover).attr('stroke', "grey").attr("opacity", 0.75).on("mouseover", handleMouseOver).on("mouseout", handleMouseOut).transition().duration('1500').attr("opacity", 0.05).attr('index', (d,i)=>i)
+        .attr('transform', d=>`translate(${x(d.Date)},${y(d.Close)} )`).text(d=>d.Hover).attr('stroke', "grey").attr("opacity", 0.75).attr('index', (d,i)=>i).on("mouseover", handleMouseOver).on("mouseout", handleMouseOut).transition().duration('1500').attr("opacity", 0.05)
         group.append("circle").attr("cx", d=>x(d.Date)).attr("cy", d=>y(d.Close)).attr("r", 3).style("fill", "#69b3a2")
     }
     , update=>{
@@ -105,11 +104,14 @@ function update(data) {
 // Create Event Handlers for mouse
 function handleMouseOver(d) {
     d3.select(this).transition().duration('50').attr('stroke', "red").attr("font-size", "18").attr("opacity", 0.75)
-    let index = this.getAttribute("index");
-    activedata[index].Hover++;
+
+    
 }
 function handleMouseOut(d) {
     d3.select(this).transition().duration('50').attr('stroke', "grey").attr("opacity", 0.75).transition().duration('1000').attr("opacity", 0.05)
+    let index = this.getAttribute("index");
+    data[index].Hover++;
+    update(data.filter(x=>x.Date < input.value))
 }
 
 let removeChildren = (element)=>{
@@ -131,7 +133,7 @@ function OnNewDataLoad() {
         setup(box.offsetWidth, box.offsetHeight)
         update(data.filter(x=>x.Date < input.value))
     }
-    let input = document.querySelector("#recent")
+
     input.setAttribute("max", extentx[1])
     input.setAttribute("min", extentx[0])
     input.addEventListener('change', event=>{
