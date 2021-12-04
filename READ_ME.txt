@@ -14,28 +14,28 @@
 14 -- public/script.js line 97-105
 15 A non trivial css file with
 16 -- Hover/focus/active codes
-17 -- public/styles.css lines 106-118
+17 -- public/styles.css lines 75-86
 18 -- Borders with rounded corners
-19 -- public/styles.css line 57
+19 -- public/styles.css line 49
 20 -- Gradient backgrounds
-21 -- public/styles.css line 92-101
+21 -- public/styles.css line 62-69
 22 A least one unicode Emojis
-23 -- public/index.html line 52
+23 -- public/index.html line 53
 24 A non--d3 svg that contains at least one:
-25 -- circle: public/index.html line 70
-26 -- path: public/index.html line 71
-27 -- rect: public/index.html line 69
-28 -- text public/index.html line 68
+25 -- circle: public/index.html line 71
+26 -- path: public/index.html line 72
+27 -- rect: public/index.html line 70
+28 -- text public/index.html line 69
 29 HTML elements must include a least one
-30 -- Button: public/index.html line 49 or line 50
-31 -- H1: public/index.html line 52
-32 -- list (ul or ol): public/index.html line 56 - 65
-33 -- link: public/index.html line 58 or line 61
-34 -- image: public/index.html line 53
+30 -- Button: public/index.html line 50 or line 51
+31 -- H1: public/index.html line 53
+32 -- list (ul or ol): public/index.html line 57 - 66
+33 -- link: public/index.html line 59 or line 62
+34 -- image: public/index.html line 54
 35 Javascript arrow functions
-36 -- public/script.js line 132 - 136
+36 -- public/script.js line 131 - 135
 37 In comments, show
 38 -- source link * critical for academic integrity as well as fixing things if you break them.
-39 -- public/script.js line 4, 51;  public/server.js line 2; public/styles.css line 6, 45, 60, 76; public/index.html line 44
+39 -- public/script.js line 4, 51;  public/server.js line 2; public/styles.css line 3, 42, 59, 73; public/index.html line 44
 40 -- % use
-41 -- public/script.js line 5, 53;  public/server.js line 3; public/styles.css line 7, 46, 61, 75; public/index.html line 45
+41 -- public/script.js line 5, 52;  public/server.js line 3; public/styles.css line 4, 43, 58, 72; public/index.html line 45

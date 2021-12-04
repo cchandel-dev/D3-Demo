@@ -48,10 +48,8 @@ document.querySelector("#FB").addEventListener('click', ()=>{
 
 }
 )
-/* 
-https://publish.uwo.ca/~jmorey2/ece/d3Moore.html
-the code below has been modified from the link above
-20% modified
+/* https://publish.uwo.ca/~jmorey2/ece/d3Moore.html
+the code below has been modified from the link above - 20% modified
 */
 function setup(w, h) {
     // set the dimensions and margins of the graph
@@ -65,7 +63,6 @@ function setup(w, h) {
     }
     width = w - margin.left - margin.right
     height = h - margin.top - margin.bottom;
-
     // append the svg object to the body of the page
     svg = d3.select("#scatter_area").append("svg").attr("viewbox", `0 0 ${width + margin.left + margin.right} ${height + margin.top + margin.bottom}`).attr('preserveAspectRatio', 'xMidYMid meet').attr("width", w).attr("height", h).append("g").attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
