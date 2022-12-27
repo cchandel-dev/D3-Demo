@@ -1,6 +1,4 @@
 
-//most of this code was copied from https://github.com/jimmorey/httpcode/blob/main/server.js
-//nearly 80% copied
 
 // create an express app
 const express = require("express")
