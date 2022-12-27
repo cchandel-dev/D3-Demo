@@ -1,4 +1,4 @@
-# Interactive-Stock-Data-Viewer
+# D3-Demo-of-Stock-Chart
 
 This program is a D3 library demo, you can pick a stock to show and then modulate the slider to change the datapoints shown. 
 Additionally each datapoint counts mouseover events and then displays it onscreen at the next mouseover event.
