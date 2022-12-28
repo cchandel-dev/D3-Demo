@@ -1,4 +1,4 @@
-# D3-Demo-of-Stock-Chart
+# D3-Demo
 
 This program is a D3 library demo, you can pick a stock to show (fed by the server) and then modulate the 
 slider to change the datapoints shown. Additionally each datapoint counts mouseover events and then 
